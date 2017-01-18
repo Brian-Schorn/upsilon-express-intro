@@ -1,12 +1,12 @@
 [
   {
-    "Title": "Picture Me Rollin",
-    "Artist": "2Pac",
-    "Album": "All Eyez On Me"
+    "title": "Picture Me Rollin",
+    "artist": "2Pac",
+    "album": "All Eyez On Me"
   },
   {
-    "Title": "Gimme the Loot",
-    "Artist": "Notorious B.I.G.",
-    "Album": "Ready to Die"
+    "title": "Gimme the Loot",
+    "artist": "Notorious B.I.G.",
+    "album": "Ready to Die"
   }
 ]
