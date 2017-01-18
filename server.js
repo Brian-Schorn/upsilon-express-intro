@@ -31,6 +31,20 @@ app.post('/songs', function(req, res){
         testTitle = req.body.title;
         if(songs.every(isDuplicate)){
           console.log("Did not match any other song titles");
+          var today = new Date();
+          var dd = today.getDate();
+          var mm = today.getMonth()+1; //January is 0!
+          var yyyy = today.getFullYear();
+
+          if(dd<10) {
+            dd='0'+dd
+          }
+
+          if(mm<10) {
+            mm='0'+mm
+          }
+
+          req.body.dateAdded = mm+'/'+dd+'/'+yyyy;
           songs.push(req.body);
           res.sendStatus(200);
         }else{

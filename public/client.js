@@ -38,7 +38,11 @@ function displaySongs(songs) {
   console.log(songs);
   $('#songs').empty();
   songs.forEach(function(song){
-    $('#songs').append('<li>' + song.title + ". By: " + song.artist + '. From: ' + song.album + '</li>')
+    if(song.hasOwnProperty('dateAdded')){
+      $('#songs').append('<li>' + song.title + ". By: " + song.artist + '. From: ' + song.album + '. Date Added: ' + song.dateAdded + '</li>');
+    }else{
+      $('#songs').append('<li>' + song.title + ". By: " + song.artist + '. From: ' + song.album + '</li>');
+  }
 
   });
 }
