@@ -14,7 +14,8 @@ function addSong(event) {
   event.preventDefault();
 
   var songData = $(this).serialize();
-  console.log(songData);
+  // console.log(songData);
+  $(this).closest('form').find("input[type=text], textarea").val("");
 
   $.ajax({
     url: '/songs',
@@ -23,6 +24,7 @@ function addSong(event) {
     success: getSongs
 
   });
+
 }
 
 function getSongs() {
