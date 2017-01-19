@@ -6,6 +6,7 @@ var app = express();
 var testTitle;
 var testAlbum;
 var testArtist;
+var error;
 
 //Makes everything in the public folder visible
 app.use(express.static('public'));
@@ -23,7 +24,7 @@ app.get('/songs', function(req, res) {
 });
 
 app.post('/songs', function(req, res){
-  console.log('req.body:' + req.body);
+  // console.log('req.body:' + req.body);
   // var x = req.body.title;
   // console.log(x);
   if(req.body.title != ""){
@@ -34,6 +35,7 @@ app.post('/songs', function(req, res){
         testTitle = req.body.title;
         testAlbum = req.body.album;
         testArtist = req.body.artist;
+        //Tests each object in the array songs against the isDuplicate function below
         if(songs.every(isDuplicate)){
           console.log("Did not match any other song titles");
           //Formats dateAdded to a readable format
@@ -55,19 +57,19 @@ app.post('/songs', function(req, res){
           res.sendStatus(200);
         }else{ //Fails if it is a duplicate entry
           console.log("Your entry appears to be a duplicate");
-          res.sendStatus(400);
+          res.status(400).send("Your entry appears to be a duplicate");
         }
       }else{ //Fails if it is a blank Album
         console.log("Invalid Entry on Album");
-        res.sendStatus(400);
+        res.status(400).send("Invalid Entry on Album");
       }
     }else{ //Fails if it is a blank Artist
       console.log("Invalid Entry on Artist");
-      res.sendStatus(400);
+      res.status(400).send("Invalid Entry on Artist");
     }
   }else{ //Fails if it is a blank Title
     console.log("Invalid Entry on Title");
-    res.sendStatus(400);
+    res.status(400).send("Invalid Entry on Title");
   }
 });
 

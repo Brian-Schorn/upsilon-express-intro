@@ -12,6 +12,7 @@ $(function(){
 function addSong(event) {
   //Stops browser from refreshing
   event.preventDefault();
+  $('#errorZone').empty();
 
   var songData = $(this).serialize();
   // console.log(songData);
@@ -21,7 +22,8 @@ function addSong(event) {
     url: '/songs',
     type: 'POST',
     data: songData,
-    success: getSongs
+    success: getSongs,
+    error: displayFailed
 
   });
 
@@ -35,6 +37,11 @@ function getSongs() {
   });
 }
 
+
+function displayFailed(errorText) {
+  console.log(errorText);
+  $('#errorZone').text(errorText.responseText);
+}
 
 function displaySongs(songs) {
   console.log(songs);
